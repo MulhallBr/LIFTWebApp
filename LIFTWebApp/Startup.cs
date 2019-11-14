@@ -42,7 +42,7 @@ namespace LIFTWebApp
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Lift}/{action=List}/{id?}"
+                    template: "{controller=Home}/{action=Index}/{id?}"
                     );
             });
 

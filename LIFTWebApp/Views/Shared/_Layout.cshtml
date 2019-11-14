@@ -27,11 +27,15 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item">
-                    <a class="nav-link" asp-action="Index">Home</a>
+                    <a class="nav-link" href="@Url.Action("Index" , "Home")">Home</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" asp-action="Analytics">Analytics</a>
+                    <a class="nav-link" href="@Url.Action("Analytics" , "Home")">Analytics</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("List" , "Lift")">Lifts</a>
                 </li>
 
             </ul>
