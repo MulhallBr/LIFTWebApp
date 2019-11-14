@@ -1,0 +1,11 @@
+﻿
+@model IEnumerable<Lift>
+
+@foreach (var lift in Model) {
+    <div>
+        <h3>@lift.ExercisePerfromed</h3>
+        @lift.DateTimePerformed
+        @lift.Weight.ToString()
+        @lift.Reps.ToString()
+    </div>
+}

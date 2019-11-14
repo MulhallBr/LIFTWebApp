@@ -12,5 +12,10 @@ namespace LIFTWebApp.Controllers
         {
             return View();
         }
+
+        public IActionResult Analytics()
+        {
+            return View();
+        }
     }
 }
