@@ -27,6 +27,8 @@ namespace LIFTWebApp
                     Configuration["Data:LIFTWebAppLifts:ConnectionString"]));
             services.AddTransient<ILiftRepository, EFLiftRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
+
+           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
