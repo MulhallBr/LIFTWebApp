@@ -9,11 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace LIFTWebApp.Models
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) { }
+            : base(options) { 
+        
+        }
 
         public DbSet<Lift> Lifts { get; set; }
     }

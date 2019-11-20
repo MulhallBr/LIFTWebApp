@@ -10,6 +10,8 @@ using Microsoft.Extensions.Hosting;
 using LIFTWebApp.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace LIFTWebApp
 {
@@ -25,6 +27,11 @@ namespace LIFTWebApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration["Data:LIFTWebAppLifts:ConnectionString"]));
+
+            services.AddIdentity<AppUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddTransient<ILiftRepository, EFLiftRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
 
@@ -34,6 +41,7 @@ namespace LIFTWebApp
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -57,7 +65,7 @@ namespace LIFTWebApp
             });
 
             SeedData.EnsurePopulated(app);
-
+            app.UseAuthentication();
             //app.UseMvcWithDefaultRoute();
 
         }
