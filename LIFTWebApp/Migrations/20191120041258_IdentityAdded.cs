@@ -39,7 +39,7 @@ namespace LIFTWebApp.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    DateRegistered = table.Column<DateTime>(nullable: false),
+                    DateRegistered = table.Column<DateTime>(nullable: false)
                    
                 },
                 constraints: table =>
