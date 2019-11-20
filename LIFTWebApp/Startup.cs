@@ -40,6 +40,14 @@ namespace LIFTWebApp
             app.UseStatusCodePages(); 
             app.UseStaticFiles(); 
             app.UseMvc(routes => {
+
+                routes.MapRoute(
+                    name: "pagination",
+                    template: "Lifts/Page{page}",
+                    defaults: new { Controller = "Lift", action = "List" }
+                    );
+
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}"

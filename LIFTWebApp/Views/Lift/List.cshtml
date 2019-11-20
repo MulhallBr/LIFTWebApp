@@ -1,11 +1,35 @@
 ﻿
-@model IEnumerable<Lift>
+@model LiftsListViewModel
 
-@foreach (var lift in Model) {
-    <div>
-        <h3>@lift.ExercisePerfromed</h3>
-        @lift.DateTimePerformed
-        @lift.Weight.ToString()
-        @lift.Reps.ToString()
+@{
+    var queryExercise =
+        from lift in Model.Lifts
+        group lift by lift.ExercisePerfromed into newGroup
+        orderby newGroup.Key
+        select newGroup;
+
+    foreach (var nameGroup in queryExercise)
+    {
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@nameGroup.Key</h5>
+
+            @foreach (var info in nameGroup)
+            {
+
+                <p class="card-text">Set # Reps: @info.Reps, Weight: @info.Weight</p>
+
+            }
+        </div>
     </div>
+    }
 }
+
+
+
+<!-- This is the pagination things at the bottom -->
+<div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-default"
+     page-class-selected="btn-warning" class="btn-group float-right">
+</div>
+
