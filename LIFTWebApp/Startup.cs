@@ -54,9 +54,9 @@ namespace LIFTWebApp
                     );
             });
 
-            SeedData.EnsurePopulated(app);
+            //SeedData.EnsureDeleted(app);
 
-            //app.UseMvcWithDefaultRoute();
+            SeedData.EnsurePopulated(app);
 
         }
     }

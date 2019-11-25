@@ -2,6 +2,9 @@
 @model LiftsListViewModel
 
 @{
+
+    var setNum = 1;
+
     var queryExercise =
         from lift in Model.Lifts
         group lift by new {lift.ExercisePerfromed, lift.DateTimePerformed} into newGroup
@@ -16,11 +19,16 @@
             @foreach (var info in nameGroup)
             {
 
-                <p class="card-text">Set # Reps: @info.Reps, Weight: @info.Weight</p>
+                <h6>Set @setNum</h6>
+                <p class="card-text">Reps: @info.Reps, Weight: @info.Weight</p>
+
+                setNum = setNum + 1;
 
             }
         </div>
     </div>
+
+        setNum = 1;
     }
 }
 
