@@ -52,6 +52,11 @@ namespace LIFTWebApp
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}"
                     );
+
+                //routes.MapRoute(
+                //    name: "LogExercises",
+                //    template: "{controller=LiftsCURD}/{action=Index}/{id?}"
+                //    );
             });
 
             //SeedData.EnsureDeleted(app);
