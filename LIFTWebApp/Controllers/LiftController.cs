@@ -10,7 +10,7 @@ namespace LIFTWebApp.Controllers
     public class LiftController : Controller
     {
         private ILiftRepository repository;
-        public int PageSize = 8;
+        public int PageSize = 6;
 
         public LiftController(ILiftRepository repo)
         {

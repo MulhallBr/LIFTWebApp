@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LIFTWebApp.Models;
+using LIFTWebApp.Models.ViewModels;
 
 namespace LIFTWebApp.Controllers
 {
@@ -44,9 +45,12 @@ namespace LIFTWebApp.Controllers
 
         // GET: LiftsCURD/Create
         public IActionResult Create()
-        {
-            return View();
-        }
+            => View(new NewLiftViewModel
+               {
+                   Lift = new Lift(),
+                   Exercises = _context.Exercises
+               });
+        
 
         // POST: LiftsCURD/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

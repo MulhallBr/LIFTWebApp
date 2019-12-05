@@ -18,5 +18,6 @@ namespace LIFTWebApp.Models
         }
 
         public DbSet<Lift> Lifts { get; set; }
+        public DbSet<Exercise> Exercises { get; set; }
     }
 }

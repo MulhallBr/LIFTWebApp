@@ -4,56 +4,66 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    #padDiv {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<div id="padDiv">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateTimePerformed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExercisePerfromed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Weight)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Reps)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTimePerformed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExercisePerfromed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Weight)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reps)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LiftID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LiftID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LiftID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateTimePerformed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExercisePerfromed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reps)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTimePerformed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExercisePerfromed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reps)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.LiftID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.LiftID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.LiftID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

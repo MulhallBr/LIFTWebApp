@@ -4,33 +4,53 @@
 }
 @model RegisterViewModel
 
-<h1>Registration Page</h1>
-<form method="post" asp-controller="Account" asp-action="Register">
-    <div asp-validation-summary="All"></div>
 
-    <div>
-        <label asp-for="Email"></label>
-        <input asp-for="Email" />
-        <span asp-validation-for="Email" />
+<div class="container">
+    <div class="row centered-form row-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Sign up for LIFT <small>It's free!</small></h4>
+            </div>
+            <div class="panel-body">
+                <form role="form" method="post" asp-controller="Account" asp-action="Register">
+                    <div asp-validation-summary="All"></div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input asp-for="Username" class="form-control input-sm" placeholder="User Name">
+                                <span asp-validation-for="Username" />
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input asp-for="Email" class="form-control input-sm" placeholder="Email Address">
+                                <span asp-validation-for="Email" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input asp-for="Password" class="form-control input-sm" placeholder="Password">
+                                <span asp-validation-for="Password" />
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input asp-for="ConfrimPassword" class="form-control input-sm" placeholder="Confirm Password">
+                                <span asp-validation-for="ConfrimPassword" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Register" class="btn btn-info btn-block">
+
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username" />
-    </div>
-
-    <div>
-        <label asp-for="Password"></label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password" />
-    </div>
-
-    <div>
-        <label asp-for="ConfrimPassword"></label>
-        <input asp-for="ConfrimPassword" />
-        <span asp-validation-for="ConfrimPassword" />
-    </div>
-    <div><input type="submit" value="Register" /></div>
-</form>
-
+</div>

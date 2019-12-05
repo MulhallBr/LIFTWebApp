@@ -63,18 +63,11 @@ namespace LIFTWebApp
                     template: "{controller=Home}/{action=Index}/{id?}"
                     );
 
-                routes.MapRoute(
-                   name: "Register",
-                   template:"{Account}/{Register}",
-                   defaults: new {Controller = "Account", action = "Register"}
-                   );
-
             });
 
             SeedData.EnsurePopulated(app);
             app.UseAuthentication();
             app.UseAuthorization();
-            //app.UseMvcWithDefaultRoute();
 
         }
     }

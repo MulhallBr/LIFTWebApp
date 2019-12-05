@@ -1,41 +1,48 @@
 ﻿
 @model LiftsListViewModel
 
-@{
 
-    var setNum = 1;
+    <div class="container">
+        @{
 
-    var queryExercise =
-        from lift in Model.Lifts
-        group lift by new {lift.ExercisePerfromed, lift.DateTimePerformed} into newGroup
-        select newGroup;
+            var setNum = 1;
 
-    foreach (var nameGroup in queryExercise)
-    {
-    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">@nameGroup.Key.ExercisePerfromed</h5>
+            var queryExercise =
+                from lift in Model.Lifts
+                group lift by new { lift.ExercisePerfromed, lift.DateTimePerformed } into newGroup
+                select newGroup;
 
-            @foreach (var info in nameGroup)
+
+
+            foreach (var nameGroup in queryExercise)
             {
 
-                <h6>Set @setNum</h6>
-                <p class="card-text">Reps: @info.Reps, Weight: @info.Weight</p>
+                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">@nameGroup.Key.ExercisePerfromed</h5>
 
-                setNum = setNum + 1;
+                        @foreach (var info in nameGroup)
+                        {
 
+                            <h6>Set @setNum</h6>
+                            <p class="card-text">Reps: @info.Reps, Weight: @info.Weight</p>
+
+                            setNum = setNum + 1;
+
+                        }
+                    </div>
+                </div>
+
+
+                setNum = 1;
             }
+        }
+
+
+        <!-- This is the pagination things at the bottom -->
+        <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
+             page-class="btn" page-class-normal="btn-default"
+             page-class-selected="btn-warning" class="btn-group">
         </div>
+
     </div>
-
-        setNum = 1;
-    }
-}
-
-
-<!-- This is the pagination things at the bottom -->
-<div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
-     page-class="btn" page-class-normal="btn-default"
-     page-class-selected="btn-warning" class="btn-group">
-</div>
-

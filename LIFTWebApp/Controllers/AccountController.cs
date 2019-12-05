@@ -52,5 +52,11 @@ namespace LIFTWebApp.Controllers
             }
             return View(vm);
         }
+
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
     }
 }
