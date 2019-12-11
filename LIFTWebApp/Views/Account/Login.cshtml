@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Title = "Login";
+}
+@model LoginViewModel
+<form method="post" asp-action="Login" asp-controller="Account">
+    <div asp-validation-summary="All"></div>
+
+
+    <div>
+        <label asp-for="Username"></label>
+        <input asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </div>
+    <div>
+        <label asp-for="Password"> </label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div>
+        <label asp-for="RememberMe"></label>
+        <input asp-for="RememberMe" />
+        <span asp-validation-for="RememberMe"></span>
+    </div>
+
+    <div>
+       <p> <input type="submit" value="Login" /> </p> <p><a asp-action="Register">Register</a></p>
+    </div>
+</form>
