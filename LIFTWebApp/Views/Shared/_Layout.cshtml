@@ -1,6 +1,4 @@
-
-@inject SignInManager<AppUser> signInManager
-
+﻿@inject SignInManager<AppUser> _signInManager
 <!DOCTYPE html>
 
 <html>
@@ -9,7 +7,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans:600&display=swap" rel="stylesheet">
 
     <title>@ViewBag.Title</title>
     <style>
@@ -32,10 +29,9 @@
         body {
             position: relative;
             margin: 0;
+            padding-bottom: 6rem;
             min-height: 100%;
             font-family: "Helvetica Neue", Arial, sans-serif;
-            color: #90ADC6;
-            background-color: #333652;
         }
 
         #mainDiv {
@@ -48,87 +44,18 @@
             right: 0;
             bottom: 0;
             left: 0;
+            padding: 1rem;
+            background-color: #efefef;
             text-align: center;
-        }
-
-        .logo {
-            font-family: 'Bungee', cursive;
-            color: #FAD02C;
-            font-size: 30px;
-            text-decoration: none;
-        }
-
-        .logo:hover {
-            color: #E9EAEC;
-        }
-
-        a:link {
-            text-decoration: none;
-        }
-
-        .tabs {
-            font-family: 'Bungee', cursive;
-            color: #FAD02C;
-            font-size: 15px;
-            text-decoration: none;
-        }
-
-        .navbar-nav > li {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-
-        .link {
-            display: inline-block;
-            font-family: 'Bungee', cursive;
-            text-decoration: none;
-            color: #FAD02C;
-            font-size: 15px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            position: relative;
-            -webkit-transition: all 0.4s ease;
-            transition: all 0.4s ease;
-            padding: 15px;
-            color: inherit;
-        }
-
-            .link:after {
-                content: "";
-                position: absolute;
-                height: 5px;
-                background-color: #FAD02C;
-                width: 0;
-                left: 50%;
-                bottom: 0;
-                -webkit-transform: translateX(-50%);
-                -ms-transform: translateX(-50%);
-                transform: translateX(-50%);
-                -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
-                transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
-            }
-
-            .link:hover {
-                color: #FAD02C;
-            }
-
-                .link:hover:after {
-                    width: 100%;
-                }
-
-        .navbar-custom {
-            background-color: #333652;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
         <div class="container">
 
-
-            <a class="navbar-brand, logo" href="@Url.Action("Index" , "Home")">LIFT Fitness</a>
-          
+            <a class="navbar-brand" href="#">LIFT Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -136,40 +63,40 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Create" , "LiftsCURD")">Log Exercises</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="@Url.Action("Index" , "Home")">
+                            Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("List" , "Lift")">Lifts</a>
+                        <a class="nav-link" href="@Url.Action("Register" , "Account")">Register</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Analytics" , "Lift")">Analytics</a>
+                        <a class="nav-link" href="@Url.Action("Login" , "Account")">Login</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Profile" , "Account")">Account</a>
-                    </li>
 
-                    @if (signInManager.IsSignedIn(User))
+                    @if (_signInManager.IsSignedIn(User))
                     {
-                        <li class="nav-item">
-                            <form method="post" asp-action="logout" asp-controller="account">
-                                <button type="submit" class="nav-link tabs link btn btn-link"> Logout @User.Identity.Name</button>
-                            </form>
-                        </li>
-                    }
-                    else
-                    {
+                     <li class="nav-item">
+                          <a class="nav-link" href="@Url.Action("Index" , "LiftsCURD")">Log Exercises</a>
+                     </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link, tabs, link" href="@Url.Action("Register" , "Account")">Register</a>
-                        </li>
+                     <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Analytics" , "Home")">Analytics</a>
+                     </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link, tabs, link" href="@Url.Action("Login" , "Account")">Login</a>
-                        </li>
+                     <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("List" , "Lift")">Lifts</a>
+                     </li>
+
+                     <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Profile" , "Account")">Account</a>
+                     </li>
                     }
 
                 </ul>
@@ -185,8 +112,8 @@
     <footer class="footer py-3 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-            <p>@signInManager.Context.User.Identity.Name</p>
         </div>
+        <!-- /.container -->
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

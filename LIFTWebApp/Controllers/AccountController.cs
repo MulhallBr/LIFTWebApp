@@ -17,8 +17,8 @@ namespace LIFTWebApp.Controllers
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
               
         }
 
@@ -76,7 +76,6 @@ namespace LIFTWebApp.Controllers
                     {
                         ModelState.AddModelError("", error.Description);
                     }
-
                 }
             }
             return View(vm);
