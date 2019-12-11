@@ -5,47 +5,55 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+    #padDiv {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+</style>
+<div id="padDiv">
 
-<h4>Lift</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Lift.UserID" class="control-label"></label>
-                <input asp-for="Lift.UserID" class="form-control" />
-                <span asp-validation-for="Lift.UserID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lift.DateTimePerformed" class="control-label"></label>
-                <input asp-for="Lift.DateTimePerformed" class="form-control" />
-                <span asp-validation-for="Lift.DateTimePerformed" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(x => Model.Lift.ExercisePerfromed, htmlAttributes: new { @class = "control-label" })
-                @Html.DropDownListFor(x => Model.Lift.ExercisePerfromed, new SelectList(Model.Exercises, "ExerciseName", "ExerciseName"), htmlAttributes: new { @class = "control-label" })
-                @Html.ValidationMessageFor(x => Model.Lift.ExercisePerfromed, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group">
-                <label asp-for="Lift.Weight" class="control-label"></label>
-                <input asp-for="Lift.Weight" class="form-control" />
-                <span asp-validation-for="Lift.Weight" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Lift.Reps" class="control-label"></label>
-                <input asp-for="Lift.Reps" class="form-control" />
-                <span asp-validation-for="Lift.Reps" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <h1>Create</h1>
+
+    <h4>Lift</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Lift.UserID" class="control-label"></label>
+                    <input asp-for="Lift.UserID" class="form-control" />
+                    <span asp-validation-for="Lift.UserID" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lift.DateTimePerformed" class="control-label"></label>
+                    <input asp-for="Lift.DateTimePerformed" class="form-control" />
+                    <span asp-validation-for="Lift.DateTimePerformed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => Model.Lift.ExercisePerfromed, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(x => Model.Lift.ExercisePerfromed, new SelectList(Model.Exercises, "ExerciseName", "ExerciseName"), htmlAttributes: new { @class = "control-label" })
+                    @Html.ValidationMessageFor(x => Model.Lift.ExercisePerfromed, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lift.Weight" class="control-label"></label>
+                    <input asp-for="Lift.Weight" class="form-control" />
+                    <span asp-validation-for="Lift.Weight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lift.Reps" class="control-label"></label>
+                    <input asp-for="Lift.Reps" class="form-control" />
+                    <span asp-validation-for="Lift.Reps" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
