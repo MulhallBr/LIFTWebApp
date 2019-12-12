@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LIFTWebApp.Models;
 using LIFTWebApp.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,17 +18,26 @@ namespace LIFTWebApp.Controllers
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+            _userManager = userManager;
+            _signInManager = signInManager;
               
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel vm) {
             if (ModelState.IsValid)
@@ -42,13 +52,13 @@ namespace LIFTWebApp.Controllers
 
             return View(vm);
         }
-
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
-
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel vm)
         {
@@ -73,6 +83,7 @@ namespace LIFTWebApp.Controllers
             return View(vm);
         }
 
+        [Authorize]
         public IActionResult Profile()
         {
             return View();
