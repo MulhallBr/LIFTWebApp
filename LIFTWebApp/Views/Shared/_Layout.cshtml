@@ -1,4 +1,4 @@
-﻿@inject SignInManager<AppUser> _signInManager;
+﻿
 <!DOCTYPE html>
 
 <html>
@@ -70,34 +70,45 @@
                         </a>
 
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Register" , "Account")">Register</a>
+                        <a class="nav-link" href="@Url.Action("Index" , "LiftsCURD")">Log Exercises</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Login" , "Account")">Login</a>
+                        <a class="nav-link" href="@Url.Action("Analytics" , "Home")">Analytics</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("List" , "Lift")">Lifts</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Profile" , "Account")">Account</a>
                     </li>
 
 
-                    @if (_signInManager.IsSignedIn(User))
+                    @if (signInManager.IsSignedIn(User))
                     {
-                     <li class="nav-item">
-                          <a class="nav-link" href="@Url.Action("Index" , "LiftsCURD")">Log Exercises</a>
-                     </li>
-
-                     <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Analytics" , "Home")">Analytics</a>
-                     </li>
-
-                     <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("List" , "Lift")">Lifts</a>
-                     </li>
-
-                     <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Profile" , "Account")">Account</a>
-                     </li>
+                        <li class="nav-item">
+                            <form method="post" asp-controller="account" asp-action="logout">
+                                <a class="nav-link">
+                                    Logout @User.Identity.Name
+                                </a>
+                            </form>
+                        </li>
                     }
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="account" asp-action="register">
+                            Register
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="account" asp-action="login">
+                            Login
+                        </a>
+                    </li>
+
 
                 </ul>
             </div>

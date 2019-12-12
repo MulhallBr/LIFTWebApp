@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace LIFTWebApp
 {
@@ -31,6 +33,16 @@ namespace LIFTWebApp
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddControllers(config =>
+            {
+                // using Microsoft.AspNetCore.Mvc.Authorization;
+                // using Microsoft.AspNetCore.Authorization;
+                var policy = new AuthorizationPolicyBuilder()
+                                 .RequireAuthenticatedUser()
+                                 .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
 
             services.AddTransient<ILiftRepository, EFLiftRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);
