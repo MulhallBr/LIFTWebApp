@@ -40,6 +40,7 @@
 
         #mainDiv {
             padding-top: 20px;
+            padding-bottom: 60px;
             font-size: 12pt;
         }
 
@@ -93,43 +94,47 @@
             color: inherit;
         }
 
-            .link:after {
-                content: "";
-                position: absolute;
-                height: 5px;
-                background-color: #FAD02C;
-                width: 0;
-                left: 50%;
-                bottom: 0;
-                -webkit-transform: translateX(-50%);
-                -ms-transform: translateX(-50%);
-                transform: translateX(-50%);
-                -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
-                transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
-            }
-
-            .link:hover {
-                color: #FAD02C;
-            }
-
-                .link:hover:after {
-                    width: 100%;
-                }
-
-        .navbar-custom {
-            background-color: #333652;
+        .link:after {
+            content: "";
+            position: absolute;
+            height: 5px;
+            background-color: #FAD02C;
+            width: 0;
+            left: 50%;
+            bottom: 0;
+            -webkit-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+            transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
         }
+
+        .link:hover {
+            color: #FAD02C;
+        }
+
+        .link:hover:after {
+            width: 100%;
+        }
+
+         .navbar-toggle {
+            background-color: #90ADC6 !important;
+        }
+        .navbar-inverse {
+            border-color: #FAD02C !important;
+        }
+
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark">
 
         <div class="container">
 
 
-            <a class="navbar-brand, logo" href="@Url.Action("Index" , "Home")">LIFT Fitness</a>
+            <a class="navbar-brand logo" href="@Url.Action("Index" , "Home")">LIFT Fitness</a>
           
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggle navbar-inverse icon-bar" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -137,26 +142,26 @@
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Create" , "LiftsCURD")">Log Exercises</a>
+                        <a class="nav-link link" href="@Url.Action("Create" , "LiftsCURD")">Log Exercises</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("List" , "Lift")">Lifts</a>
+                        <a class="nav-link link" href="@Url.Action("List" , "Lift")">Lifts</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Analytics" , "Lift")">Analytics</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Profile" , "Account")">Account</a>
+                        <a class="nav-link link" href="@Url.Action("Analytics" , "Lift")">Analytics</a>
                     </li>
 
                     @if (signInManager.IsSignedIn(User))
                     {
                         <li class="nav-item">
+                            <a class="nav-link link" href="@Url.Action("Profile" , "Account")">Account</a>
+                        </li>
+
+                        <li class="nav-item">
                             <form method="post" asp-action="logout" asp-controller="account">
-                                <button type="submit" class="nav-link tabs link btn btn-link"> Logout @User.Identity.Name</button>
+                                <button type="submit" class="nav-link link btn btn-link"> Logout @User.Identity.Name</button>
                             </form>
                         </li>
                     }
@@ -164,11 +169,11 @@
                     {
 
                         <li class="nav-item">
-                            <a class="nav-link, tabs, link" href="@Url.Action("Register" , "Account")">Register</a>
+                            <a class="nav-link link" href="@Url.Action("Register" , "Account")">Sign-Up</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link, tabs, link" href="@Url.Action("Login" , "Account")">Login</a>
+                            <a class="nav-link link" href="@Url.Action("Login" , "Account")">Login</a>
                         </li>
                     }
 
@@ -184,8 +189,7 @@
     <!-- Footer -->
     <footer class="footer py-3 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-            <p>@signInManager.Context.User.Identity.Name</p>
+            <p class="m-0 text-center text-white">Copyright &copy; LIFT 2019</p>
         </div>
     </footer>
 

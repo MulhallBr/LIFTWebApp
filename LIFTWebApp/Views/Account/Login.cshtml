@@ -2,28 +2,54 @@
     Layout = "_Layout";
     ViewBag.Title = "Login";
 }
+
 @model LoginViewModel
-<form method="post" asp-action="Login" asp-controller="Account">
-    <div asp-validation-summary="All"></div>
 
 
-    <div>
-        <label asp-for="Username"></label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
-    </div>
-    <div>
-        <label asp-for="Password"> </label>
-        <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </div>
-    <div>
-        <label asp-for="RememberMe"></label>
-        <input asp-for="RememberMe" />
-        <span asp-validation-for="RememberMe"></span>
-    </div>
+<div class="container">
+    <div class="row centered-form row-fluid">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">Login</h1>
+            </div>
+            <div class="panel-body">
+                <form role="form" method="post" asp-controller="Account" asp-action="Login">
+                    <div asp-validation-summary="All"></div>
 
-    <div>
-       <p> <input type="submit" value="Login" /> </p> <p><a asp-action="Register">Register</a></p>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input asp-for="Username" class="form-control input-sm" placeholder="User Name">
+                                <span asp-validation-for="Username" />
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <input asp-for="Password" class="form-control input-sm" placeholder="Password">
+                                <span asp-validation-for="Password" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                <label asp-for="RememberMe"></label>
+                                <input asp-for="RememberMe" />
+                                <span asp-validation-for="RememberMe"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Login" class="btn btn-warning btn-block">
+
+                    <br />
+
+                    <p>If you don't have an account you can register <a asp-action="Register">here</a>!</p>
+
+                </form>
+            </div>
+        </div>
     </div>
-</form>
+</div>

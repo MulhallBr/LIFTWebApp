@@ -1,4 +1,6 @@
 ﻿
+@inject SignInManager<AppUser> signInManager
+
 @{
     Layout = "_Layout";
     ViewBag.Title = "Home";
@@ -53,32 +55,31 @@
             padding-right: 100px;
         }
 
-        .pic-title{
+        .pic-title {
             font-family: 'Bungee', cursive;
             color: #FAD02C;
         }
 
-        .pic-txt{
+        .pic-txt {
             font-family: 'Open Sans', sans-serif;
             color: #E9EAEC;
         }
 
-        img{
-            max-width : 400px;
+        img {
+            max-width: 400px;
             max-height: 600px;
         }
 
-        .card-title{
+        .card-title {
             font-family: 'Bungee', cursive;
             color: #FAD02C;
         }
 
-        
-        .card-text{
+
+        .card-text {
             font-family: 'Open Sans', sans-serif;
             color: #333652;
         }
-
     </style>
 
 </head>
@@ -90,8 +91,13 @@
     </div>
     <div class="weight-img-text">
         <h1 style="font-size:50px; opacity: 1;">Train Smarter. <br />Get Results.</h1>
-        <h3>Sign-up for LIFT now!</h3>
-        <button href="">Register Now</button>
+
+        @if (!signInManager.IsSignedIn(User))
+        {
+            <h3>Sign-up for LIFT now!</h3>
+
+            <a href="@Url.Action("Register", "Account")" class="btn btn-light mt-3">Why not!</a>
+        }
     </div>
 
     <!-- Page Content -->
@@ -119,7 +125,7 @@
                         <p class="card-text">Track your lifting progress across any date range. See specific exercises and watch your progress on a easy to read chart.</p>
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-warning btn-sm">More Info</a>
+                        <a href="@Url.Action("Analytics" , "Lift")" class="btn btn-warning btn-sm">Let's Go!</a>
                     </div>
                 </div>
             </div>
@@ -136,8 +142,8 @@
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Card Three</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                        <h2 class="card-title">New Here?</h2>
+                        <p class="card-text">All you have to do is give us 100% on this assignment and you're guaranteed to be fit in no time!</p>
                     </div>
                     <div class="card-footer">
                         <a href="#" class="btn btn-warning btn-sm">More Info</a>
