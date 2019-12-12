@@ -34,15 +34,7 @@ namespace LIFTWebApp
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddControllers(config =>
-            {
-                // using Microsoft.AspNetCore.Mvc.Authorization;
-                // using Microsoft.AspNetCore.Authorization;
-                var policy = new AuthorizationPolicyBuilder()
-                                 .RequireAuthenticatedUser()
-                                 .Build();
-                config.Filters.Add(new AuthorizeFilter(policy));
-            });
+           
 
             services.AddTransient<ILiftRepository, EFLiftRepository>();
             services.AddMvc(options => options.EnableEndpointRouting = false);

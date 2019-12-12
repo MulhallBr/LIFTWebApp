@@ -27,7 +27,3 @@
         <p> <input type="submit" value="Login" /> </p> <p><a asp-action="Register">Register</a></p>
     </div>
 </form>
-@if ((await AuthorizationService.AuthorizeAsync(User, "PolicyName")).Succeeded)
-{
-    <p>This paragraph is displayed because you fulfilled PolicyName.</p>
-}
