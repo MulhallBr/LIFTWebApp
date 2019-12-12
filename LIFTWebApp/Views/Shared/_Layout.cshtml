@@ -6,7 +6,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Bungee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans:600&display=swap" rel="stylesheet">
 
     <title>@ViewBag.Title</title>
     <style>
@@ -48,7 +48,7 @@
             text-align: center;
         }
 
-        .logo{
+        .logo {
             font-family: 'Bungee', cursive;
             color: #FAD02C;
             font-size: 30px;
@@ -59,16 +59,16 @@
             text-decoration: none;
         }
 
-        .tabs{
+        .tabs {
             font-family: 'Bungee', cursive;
             color: #FAD02C;
             font-size: 15px;
             text-decoration: none;
         }
 
-        .navbar-nav > li{
-            padding-left:15px;
-            padding-right:15px;
+        .navbar-nav > li {
+            padding-left: 15px;
+            padding-right: 15px;
         }
 
         .link {
@@ -86,32 +86,33 @@
             color: inherit;
         }
 
-        .link:after {
-            content: "";
-            position: absolute;
-            height: 5px;
-            background-color: #FAD02C;
-            width: 0;
-            left: 50%;
-            bottom: 0;
-            -webkit-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-            -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
-            transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
-        }
+            .link:after {
+                content: "";
+                position: absolute;
+                height: 5px;
+                background-color: #FAD02C;
+                width: 0;
+                left: 50%;
+                bottom: 0;
+                -webkit-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                transform: translateX(-50%);
+                -webkit-transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+                transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) all;
+            }
 
-        .link:hover {
-            color: #FAD02C;
-        }
+            .link:hover {
+                color: #FAD02C;
+            }
 
-        .link:hover:after {
-            width: 100%;
-        }
+                .link:hover:after {
+                    width: 100%;
+                }
+
         .navbar-custom {
             background-color: #333652;
-        } 
-</style>
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark">
