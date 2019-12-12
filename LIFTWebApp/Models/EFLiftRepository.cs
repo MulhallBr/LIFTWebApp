@@ -15,5 +15,7 @@ namespace LIFTWebApp.Models
         }
 
         public IQueryable<Lift> Lifts => context.Lifts;
+
+        public IQueryable<Exercise> Exercises => context.Exercises;
     }
 }

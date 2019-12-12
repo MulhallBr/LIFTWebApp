@@ -2,42 +2,92 @@
 @model LiftsListViewModel
 
 
-    <div class="container">
-        @{
+<div class="container">
+    @{
 
-            var setNum = 1;
+        var queryExercise =
+            from lift in Model.Lifts
+            group lift by new { lift.ExercisePerfromed, lift.DateTimePerformed } into newGroup
+            select newGroup;
 
-            var queryExercise =
-                from lift in Model.Lifts
-                group lift by new { lift.ExercisePerfromed, lift.DateTimePerformed } into newGroup
-                select newGroup;
-
-
-
-            foreach (var nameGroup in queryExercise)
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>
+                        Exercise
+                    </th>
+                    <th>
+                        Set
+                    </th>
+                    <th>
+                        Reps
+                    </th>
+                    <th>
+                        Weight
+                    </th>
+                    <th>
+                        Date Performed
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var x in queryExercise)
             {
+                List<int> setsList = new List<int>();
+                List<int> repsList = new List<int>();
+                List<int> weightList = new List<int>();
 
-                <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">@nameGroup.Key.ExercisePerfromed</h5>
+                var setNum = 1;
 
-                        @foreach (var info in nameGroup)
+                @foreach (var info in x)
+                {
+
+                    setsList.Add(setNum);
+                    repsList.Add(info.Reps);
+                    weightList.Add(info.Weight);
+
+                    setNum = setNum + 1;
+
+                }
+
+                <tr>
+                    <td>
+                        @x.Key.ExercisePerfromed
+                    </td>
+                    <td>
+                        @foreach (var i in setsList)
                         {
-
-                            <h6>Set @setNum</h6>
-                            <p class="card-text">Reps: @info.Reps, Weight: @info.Weight</p>
-
-                            setNum = setNum + 1;
+                            @i;
+                            <br />
 
                         }
-                    </div>
-                </div>
+                    </td>
+                    <td>
+                        @foreach (var i in repsList)
+                        {
+                            @i;
+                            <br />
 
+                        }
+                    </td>
+                    <td>
+                        @foreach (var i in weightList)
+                        {
+                            @i;
+                            <br />
 
-                setNum = 1;
+                        }
+                    </td>
+                    <td>
+                        @x.Key.DateTimePerformed
+                    </td>
+
+                </tr>
             }
-        }
 
+        </table>
+
+        }
 
         <!-- This is the pagination things at the bottom -->
         <div page-model="@Model.PagingInfo" page-action="List" page-classes-enabled="true"
@@ -45,4 +95,4 @@
              page-class-selected="btn-warning" class="btn-group">
         </div>
 
-    </div>
+</div>

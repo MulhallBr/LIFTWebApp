@@ -10,7 +10,7 @@ namespace LIFTWebApp.Controllers
     public class LiftController : Controller
     {
         private ILiftRepository repository;
-        public int PageSize = 6;
+        public int PageSize = 12;
 
         public LiftController(ILiftRepository repo)
         {
@@ -31,5 +31,28 @@ namespace LIFTWebApp.Controllers
                     TotalItems = repository.Lifts.Count()
                 }
             });
+
+        public ViewResult Analytics()
+            => View(new AnalyticsViewModel
+            {
+                Lifts = repository.Lifts
+                    .OrderBy(p => p.LiftID),
+                Exercises = repository.Exercises
+                    .OrderBy(p => p.ExerciseName)
+            });
+
+        [HttpPost]
+        public ViewResult Analytics(string ExerciseName)
+        {
+            ViewBag.Value = ExerciseName;
+
+            return View(new AnalyticsViewModel
+                {
+                    Lifts = repository.Lifts
+                        .OrderBy(p => p.LiftID),
+                    Exercises = repository.Exercises
+                        .OrderBy(p => p.ExerciseName),
+                });
+        }
     }
 }

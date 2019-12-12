@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Analytics";
+}
+
+@model AnalyticsViewModel
+
+@{
+
+    var queryExercise =
+        from lift in Model.Lifts
+        where lift.ExercisePerfromed == ViewBag.Value
+        orderby lift.DateTimePerformed
+        select lift;
+
+
+    var XLabels = Newtonsoft.Json.JsonConvert.SerializeObject(queryExercise.Select(x => x.DateTimePerformed).ToList());
+    var YValues = Newtonsoft.Json.JsonConvert.SerializeObject(queryExercise.Select(x => x.Weight).ToList());
+    ViewData["Title"] = "Line Chart";
+}
+
+    <div class="container">
+
+        <form asp-action="Analytics">
+            <div class="form-group">
+                <h3>Select Exersice</h3>
+                @Html.DropDownList("ExerciseName", new SelectList(Model.Exercises, "ExerciseName", "ExerciseName"), htmlAttributes: new { @class = "control-label" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Refresh" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+        <div class="box-body">
+            <div class="chart-container">
+                <canvas id="chart" style="width:100%; height:600px"></canvas>
+            </div>
+        </div>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script type="text/javascript">
+
+            $(function () {
+                var chartName = "chart";
+                var ctx = document.getElementById(chartName).getContext('2d');
+                var data = {
+                    labels: @Html.Raw(XLabels),
+                    datasets: [{
+                        label: "Weight",
+                        backgroundColor: [
+                            'rgb(250, 208, 44, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(51, 54, 82, 1)'
+                        ],
+                        borderWidth: 5,
+                        data: @Html.Raw(YValues) }]
+                };
+
+                var options = {
+                    maintainAspectRatio: false,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMin: 50,
+                                suggestedMax: 200,
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: true,
+                                color: 'rgba(144, 173, 198, 0.5)'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            gridLines: {
+                                display: true,
+                                color: 'rgba(144, 173, 198, 0.5)'
+                            }
+                        }]
+                    }
+                };
+
+                var myChart = new  Chart(ctx, {
+                    options: options,
+                    data: data,
+                    type: 'line'
+                });
+            });
+
+        </script>
+
+    </div>

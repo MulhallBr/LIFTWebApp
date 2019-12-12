@@ -54,7 +54,7 @@
 
         <div class="container">
 
-            <a class="navbar-brand" href="#">LIFT Fitness</a>
+            <a class="navbar-brand" href="@Url.Action("Index" , "Home")">LIFT Fitness</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -67,19 +67,18 @@
                             Home
                             <span class="sr-only">(current)</span>
                         </a>
-
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index" , "LiftsCURD")">Log Exercises</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Analytics" , "Home")">Analytics</a>
+                        <a class="nav-link" href="@Url.Action("Create" , "LiftsCURD")">Log Exercises</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("List" , "Lift")">Lifts</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Analytics" , "Lift")">Analytics</a>
                     </li>
 
                     <li class="nav-item">
@@ -104,7 +103,6 @@
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
         </div>
-        <!-- /.container -->
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

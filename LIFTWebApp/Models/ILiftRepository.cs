@@ -8,5 +8,7 @@ namespace LIFTWebApp.Models
     public interface ILiftRepository
     {
         IQueryable<Lift> Lifts { get; }
+
+        IQueryable<Exercise> Exercises { get; }
     }
 }
