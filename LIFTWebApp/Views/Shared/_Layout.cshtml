@@ -29,16 +29,15 @@
         body {
             position: relative;
             margin: 0;
-            padding-bottom: 6rem;
             min-height: 100%;
             font-family: "Helvetica Neue", Arial, sans-serif;
             color: #90ADC6;
+            background-color: #333652;
         }
 
         #mainDiv {
             padding-top: 20px;
             font-size: 12pt;
-            background-color: #333652;
         }
 
         .footer {
@@ -46,8 +45,6 @@
             right: 0;
             bottom: 0;
             left: 0;
-            padding: 1rem;
-            background-color: #333652;
             text-align: center;
         }
 
@@ -55,7 +52,7 @@
             font-family: 'Bungee', cursive;
             color: #FAD02C;
             font-size: 30px;
-             text-decoration: none;
+            text-decoration: none;
         }
 
         a:link {
@@ -112,14 +109,12 @@
             width: 100%;
         }
         .navbar-custom {
-            background-color: #333652
-
-;
+            background-color: #333652;
         } 
 </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-custom">
+    <nav class="navbar navbar-expand-md bg-dark">
 
         <div class="container">
 
@@ -133,30 +128,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
 
-                    <li class="nav-item active">
-                        <a class="nav-link, tabs" href="@Url.Action("Index" , "Home")">
-                            Home
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-
-
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Create" , "LiftsCURD")">Log Exercises</a>
+                        <a class="nav-link, tabs link" href="@Url.Action("Index" , "Home")">Home</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("List" , "Lift")">Lifts</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Analytics" , "Lift")">Analytics</a>
-                    </li>
-              
                     <li class="nav-item">
                         <a class="nav-link, tabs, link" href="@Url.Action("Create" , "LiftsCURD")">Log Exercises</a>
                     </li>
-              
+
                     <li class="nav-item">
                         <a class="nav-link, tabs, link" href="@Url.Action("List" , "Lift")">Lifts</a>
                     </li>
@@ -164,16 +143,17 @@
                     <li class="nav-item">
                         <a class="nav-link, tabs, link" href="@Url.Action("Analytics" , "Lift")">Analytics</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link, tabs, link" href="@Url.Action("Register" , "Account")">Register</a>
-                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link, tabs, link" href="@Url.Action("Profile" , "Account")">Account</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Login" , "Account")">Login</a>
+                        <a class="nav-link, tabs, link" href="@Url.Action("Register" , "Account")">Register</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link, tabs, link" href="@Url.Action("Login" , "Account")">Login</a>
                     </li>
 
                 </ul>
