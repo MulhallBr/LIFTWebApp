@@ -28,6 +28,7 @@ namespace LIFTWebApp.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel vm) {
             if (ModelState.IsValid)
@@ -36,11 +37,18 @@ namespace LIFTWebApp.Controllers
                 if (result.Succeeded) {
                     return RedirectToAction("Index","Home");
                 }
-                ModelState.AddModelError("","Invalid login attempt");
+                ModelState.AddModelError(string.Empty, "Invalid login attempt");
                 return View(vm);
             }
 
             return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet]

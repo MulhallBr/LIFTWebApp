@@ -48,7 +48,13 @@ namespace LIFTWebApp
             }
             
             app.UseStatusCodePages(); 
-            app.UseStaticFiles(); 
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            SeedData.EnsurePopulated(app);
+
             app.UseMvc(routes => {
 
                 routes.MapRoute(
@@ -64,10 +70,6 @@ namespace LIFTWebApp
                     );
 
             });
-
-            SeedData.EnsurePopulated(app);
-            app.UseAuthentication();
-            app.UseAuthorization();
 
         }
     }
