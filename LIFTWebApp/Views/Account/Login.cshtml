@@ -2,6 +2,7 @@
     Layout = "_Layout";
     ViewBag.Title = "Login";
 }
+
 @model LoginViewModel
 
 
@@ -9,7 +10,7 @@
     <div class="row centered-form row-fluid">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1 class="panel-title">Sign In</h1>
+                <h1 class="panel-title">Login</h1>
             </div>
             <div class="panel-body">
                 <form role="form" method="post" asp-controller="Account" asp-action="Login">
@@ -42,6 +43,8 @@
                     </div>
 
                     <input type="submit" value="Login" class="btn btn-warning btn-block">
+
+                    <br />
 
                     <p>If you don't have an account you can register <a asp-action="Register">here</a>!</p>
 

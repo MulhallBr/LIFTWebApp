@@ -50,9 +50,8 @@
                         @Html.DisplayFor(modelItem => item.Reps)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.LiftID">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.LiftID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.LiftID">Delete</a>
+                        <a asp-action="Details" asp-route-id="@item.LiftID" class="btn btn-secondary btn-sm">Details</a> 
+                        <a asp-action="Delete" asp-route-id="@item.LiftID" class="btn btn-danger btn-sm">Delete</a>
                     </td>
                 </tr>
             }

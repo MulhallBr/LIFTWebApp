@@ -24,7 +24,7 @@
 
         <form asp-action="Analytics">
             <div class="form-group">
-                <h3>Select Exersice</h3>
+                <h2>Select Exersice</h2>
                 @Html.DropDownList("ExerciseName", new SelectList(Model.Exercises, "ExerciseName", "ExerciseName"), htmlAttributes: new { @class = "control-label" })
             </div>
 
@@ -33,6 +33,7 @@
             </div>
         </form>
 
+        <br />
 
         <div class="box-body">
             <div class="chart-container">
