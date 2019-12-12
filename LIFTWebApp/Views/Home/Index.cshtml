@@ -22,35 +22,101 @@
     <!-- Custom styles for this template -->
     <link href="css/small-business.css" rel="stylesheet">
 
+    <style>
+        .weight-img {
+            background-image: url("/images/homepageImg.jpg");
+            background-color: #cccccc;
+            height: 500px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            opacity: 0.4;
+            padding-top: 0px;
+        }
+
+        .weight-img-text {
+            text-align: center;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FAD02C;
+            font-family: 'Bungee', cursive;
+        }
+
+        .img-container {
+            opacity: 0.7;
+            width: 30%;
+            height: 30%;
+            padding-left: 200px;
+            padding-right: 100px;
+        }
+
+        .pic-title{
+            font-family: 'Bungee', cursive;
+            color: #FAD02C;
+        }
+
+        .pic-txt{
+            font-family: 'Open Sans', sans-serif;
+            color: #E9EAEC;
+        }
+
+        img{
+            max-width : 400px;
+            max-height: 600px;
+        }
+
+        .card-title{
+            font-family: 'Bungee', cursive;
+            color: #FAD02C;
+        }
+
+        
+        .card-text{
+            font-family: 'Open Sans', sans-serif;
+            color: #333652;
+        }
+
+    </style>
+
 </head>
 
 <body>
+
+    <div class="weight-img">
+
+    </div>
+    <div class="weight-img-text">
+        <h1 style="font-size:50px; opacity: 1;">Train Smarter. <br />Get Results.</h1>
+        <h3>Sign-up for LIFT now!</h3>
+        <button href="">Register Now</button>
+    </div>
 
     <!-- Page Content -->
     <div class="container">
 
         <!-- Heading Row -->
         <div class="row align-items-center my-5">
-            <div class="col-lg-7">
-                <img class="img-fluid rounded mb-4 mb-lg-0" src="http://placehold.it/900x400" alt="">
+            <div class="col-lg-5">
+                <img class="img-fluid rounded mb-4 mb-lg-0" src="~/images/gymdude.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
-            <div class="col-lg-5">
-                <h1 class="font-weight-light">Business Name or Tagline</h1>
-                <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-                <a class="btn btn-warning" href="#">Call to Action!</a>
+            <div class="col-lg-7">
+                <h1 class="font-weight-light, pic-title">How Does LIFT Help Me?</h1>
+                <p class="pic-txt">Being simple doesn't mean you have to compromise! LIFT has many features others don't have such as a summary page with stats from your previous workout, powerful graphing of both strength and cardio exercises, the ability to log supersets, backup, and much more.</p>
             </div>
             <!-- /.col-md-4 -->
         </div>
         <!-- /.row -->
-
         <!-- Content Row -->
         <div class="row">
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Card One</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+                        <h2 class="card-title">Chart all the things.</h2>
+                        <p class="card-text">Track your lifting progress across any date range. See specific exercises and watch your progress on a easy to read chart.</p>
                     </div>
                     <div class="card-footer">
                         <a href="#" class="btn btn-warning btn-sm">More Info</a>
@@ -61,11 +127,8 @@
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Card Two</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-warning btn-sm">More Info</a>
+                        <h2 class="card-title">Optimized for speed!</h2>
+                        <p class="card-text">LIFT is designed to stay out of your way. No useless cluttler.</p>
                     </div>
                 </div>
             </div>
@@ -88,7 +151,6 @@
 
     </div>
     <!-- /.container -->
-
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
